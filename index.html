@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solara Wellness Hub - SEO Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        .showcase {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slide {
+            flex: 1;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .score-ring {
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        .score-ring svg {
+            transform: rotate(-90deg);
+        }
+
+        .score-ring .bg {
+            fill: none;
+            stroke: #e0e0e0;
+            stroke-width: 8;
+        }
+
+        .score-ring .fill {
+            fill: none;
+            stroke: #ff4444;
+            stroke-width: 8;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            stroke-linecap: round;
+        }
+
+        .score-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff4444;
+        }
+
+        .data-table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+            min-width: 300px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .data-table td {
+            color: #666;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .issues-list {
+            text-align: left;
+            max-width: 400px;
+            margin: 1rem 0;
+        }
+
+        .issues-list li {
+            margin-bottom: 0.5rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .nav-dot.active {
+            background: #2B4DAF;
+        }
+
+        .ranking-data {
+            display: grid;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 1rem 0;
+        }
+
+        .ranking-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .ranking-keyword {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .ranking-position {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ff4444;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .slide {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="showcase">
+        <!-- Slide 1: SEO Audit -->
+        <div class="slide active">
+            <h1>SEO Audit Results</h1>
+            
+            <div class="score-ring">
+                <svg width="120" height="120">
+                    <circle class="bg" cx="60" cy="60" r="45"></circle>
+                    <circle class="fill" cx="60" cy="60" r="45"></circle>
+                </svg>
+                <div class="score-text">0/100</div>
+            </div>
+            
+            <h2>Current Site Health Score</h2>
+            
+            <div class="issues-list">
+                <h3>Key Technical Issues Found:</h3>
+                <ul>
+                    <li>No dedicated website</li>
+                    <li>No Google Business Profile</li>
+                    <li>No mobile optimization</li>
+                    <li>No local citations</li>
+                    <li>No keyword optimization</li>
+                    <li>No domain authority</li>
+                </ul>
+            </div>
+            
+            <p><strong>Prepared for Charlie O'Hara</strong><br>Solara Wellness Hub</p>
+        </div>
+
+        <!-- Slide 2: Keywords & Search Volumes -->
+        <div class="slide">
+            <h1>Search Volume Data</h1>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Keyword</th>
+                        <th>Monthly Searches</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"sauna Derry"</td>
+                        <td>20-40</td>
+                    </tr>
+                    <tr>
+                        <td>"sauna near me" (Derry area)</td>
+                        <td>50-80</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>Search demand exists but no local businesses are capturing these searches</p>
+        </div>
+
+        <!-- Slide 3: Current Rankings -->
+        <div class="slide">
+            <h1>Current Search Rankings</h1>
+            
+            <div class="ranking-data">
+                <div class="ranking-item">
+                    <div class="ranking-keyword">"sauna Derry"</div>
+                    <div class="ranking-position">Not Found</div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-keyword">"sauna near me"</div>
+                    <div class="ranking-position">Not Found</div>
+                </div>
+            </div>
+            
+            <p>Solara Wellness Hub does not appear in search results for either target keyword</p>
+            
+            <p style="margin-top: 2rem; font-size: 0.875rem; color: #999;">
+                <strong>Phil Patterson</strong><br>
+                Blue Canvas AI - Derry's AI Consultancy
+            </p>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-dot active" data-slide="0"></div>
+            <div class="nav-dot" data-slide="1"></div>
+            <div class="nav-dot" data-slide="2"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = n;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Click navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+
+        // Touch/click navigation
+        let startX = 0;
+        let endX = 0;
+
+        document.addEventListener('touchstart', e => {
+            startX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            endX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        document.addEventListener('click', e => {
+            if (e.target.closest('.nav-dot')) return;
+            
+            const rect = document.body.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const centerX = rect.width / 2;
+            
+            if (clickX > centerX) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        });
+
+        function handleSwipe() {
+            if (startX - endX > 50) {
+                nextSlide();
+            } else if (endX - startX > 50) {
+                prevSlide();
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>
